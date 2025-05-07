@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+
+        angular.module("MyApp",[])
+        .controller("MyController",function($scope, $http){
+
+            $http.get("https://www.example.com/users")
+            .then(function(response){
+                $scope.users = response.data;
+            })
+            .catch(function(error){
+                $scope.error = "The data was not fetched."
+            })
+
+
+            $http.post("https://www.example.com/users", {name : 'Dharm'})
+            .then(function(response){
+                console.log("THe data was sent. uSer saved")
+            })
+
+        })
+
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyController">
+        <p ng-if="error">{{error}}</p>
+        <ul>
+            <li ng-repeat="user in users">{{user.name}}</li>
+        </ul>
+    </div>
+</body>
+</html>

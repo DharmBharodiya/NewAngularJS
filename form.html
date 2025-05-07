@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .ng-dirty{
+            border: 2px solid red;
+        }
+
+        .ng-pristine{
+            border: 2px solid green;
+        }
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        angular.module("MyApp",[])
+        .controller("FormController", function(){
+
+        })
+    </script>
+</head>
+<body ng-app="MyApp">
+    <form action="post" ng-controller="FormController as fc" novalidate ng-submit="submit()" name="myForm">
+
+        <input type="text" required name="username" placeholder="username" ng-model="username">
+        <input type="text" required name="email" placeholder="email" ng-model="useremail">
+
+        <button type="submit">Submit</button>
+<h1>Form Level</h1>
+        <p>Form pristine {{myForm.$pristine}}</p>
+        <p>Form dirty {{myForm.$dirty}}</p>
+        <p>Form valid {{myForm.$valid}}</p>
+        <p>Form invalid {{myForm.$invalid}}</p>
+        <p>Form submitted: {{myForm.$submitted}}</p>
+
+        <h1>Input level</h1>
+        <p>Username pristine {{myForm.username.$pristine}}</p>
+        <p>Username dirty {{myForm.username.$dirty}}</p>
+        <p>Username valid {{myForm.username.$valid}}</p>
+        <p>Username invalid {{myForm.username.$invalid}}</p>
+        <p>Username touched: {{myForm.username.$touched}}</p>
+        <p>username untouched: {{myForm.username.$untouched}}</p>
+
+        
+    </form>
+</body>
+</html>

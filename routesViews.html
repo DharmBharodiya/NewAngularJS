@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="route.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            text-align: center;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        a{
+            text-decoration: none;
+            outline: none;
+            border: none;
+            color: white;
+            font-family: sans-serif;
+            padding: 10px;
+        }
+        a:hover{
+            transition: 0.2s;
+            color: black;
+            background: tomato;
+        }
+
+</style>
+</head>
+<body ng-app="MyApp">
+    <nav class="MainContainer">
+
+        <a ng-class="{active: $location.path() === '/home'}" href="#!/home">Home</a>
+        <a ng-class="{active: $location.path() === '/about'}" href="#!/about">About</a>
+        <a ng-class="{active: $location.path() === '/contact'}" href="#!/contact">Contact</a>
+
+    </nav>
+    <!--this is where the view will be loaded dynamically according to the route or URL-->
+    <div ng-view></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="OctalApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Decimal to Octal Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        angular.module("OctalApp", [])
+        // Custom Service for Octal Conversion
+        .factory("OctalService", function() {
+            return {
+                toOctal: function(number) {
+                    // Convert number to octal, handle invalid input
+                    var num = Number(number);
+                    if (isNaN(num) || number === "") {
+                        return "Invalid input";
+                    }
+                    return num.toString(8); // Convert to octal (base 8)
+                }
+            };
+        })
+        // Controller to use the service
+        .controller("OctalController", function($scope, OctalService) {
+            $scope.number = ""; // Start with empty input
+            
+            $scope.getOctal = function() {
+                return OctalService.toOctal($scope.number);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="OctalController">
+        <h1>Decimal to Octal Converter</h1>
+        <input type="number" ng-model="number" placeholder="Enter a decimal number">
+        <p>Octal: {{getOctal()}}</p>
+    </div>
+</body>
+</html>

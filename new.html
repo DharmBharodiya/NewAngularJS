@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        angular.module("MyApp", [])
+        .controller("ctrl", function() {
+            this.username = "Dharm";
+            this.names = ['dharm', 'vicky', 'katrina', 'kirtan', 'astha', 'yatri', 'raksit', 'dhruvin'];
+            this.marks = ['45', '56', '30', '23', '1', '67'];
+        });
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="ctrl as c" ng-init="admin='Kallu'">
+        <h1>Welcome, {{c.username | lowercase}}</h1>
+        <h2>The current admin is {{admin | uppercase}}</h2>
+        <input type="text" ng-model="number">
+        <p>Your mobile number is: {{number || 0}}</p>
+        <input type="text" ng-model="salary">
+        <p>The salary is: {{salary | currency:"Rs."}}</p>
+        <ul>
+            <li ng-repeat="fruit in ['apple','banana','mango','kiwi']">{{fruit}}</li>
+        </ul>
+        <input type="text" ng-model="searchText" placeholder="search for the name here">
+        <ul>
+            <li ng-repeat="name in c.names | filter: searchText">{{name}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="mark in c.marks | orderBy:'-'">{{mark}}</li>
+        </ul>
+    </div>
+</body>
+</html>

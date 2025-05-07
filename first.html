@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body ng-app="myApp">
+
+    <div ng-controller="NewController">
+        <!-- <ul>
+            <li ng-repeat="user in users">{{user}}</li>
+        </ul> -->
+
+        <input type="text" placeholder="enter your username" name="username" ng-model="username">
+        <!-- <p>Welcome, {{username}}</p> -->
+         <!-- <p>Welcome, <span ng-bind="username"></span></p> -->
+
+    </div>
+    
+    <script src="./angular.min.js"></script>
+    <script>
+        let app = angular.module("myApp", [])
+
+        app.controller("NewController", function($scope){
+            $scope.users = ['one', 'two', 'three', 'four'];
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./angular.min.js"></script>
+        <script>
+            let app = angular.module("MyApp", []);
+
+            app.controller("MyController", function($scope){
+                $scope.users = ['astha', 'dharm', 'kirtan', 'aryan', 'bhiwandi', 'zalavad', 'babaita', 'jethaji'];
+                $scope.students = [
+                    {
+                        name: "astha",
+                        age: 16
+                    },
+                    {
+                        name:"dharm",
+                        age: 35
+                    },
+                    {
+                        name: "komal",
+                        age: 44
+                    },
+                    {
+                        name: "kirtan",
+                        age: 12
+                    }
+                ]
+            })
+        </script>
+    </head>
+    <body ng-app="MyApp">
+        <div ng-controller="MyController">
+            <input type="text" placeholder="Search over here" ng-model="searchText">
+            <p ng-repeat="student in students  | filter:searchText |orderBy: 'age'">{{student.name}} is {{student.age}} years old</p>
+        </div> 
+    </body>
+    </html>
