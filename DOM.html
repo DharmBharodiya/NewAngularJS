@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        angular.module("MyApp", [])
+        .controller("MyController", function(){
+            this.count = 0;
+            this.increment = function(){
+                this.count++;
+            }
+        })
+    </script>
+</head>
+<body ng-app="MyApp">
+    
+    <div ng-controller="MyController as dharm">
+        <input type="text" ng-disabled="true" placeholder="Enter your number">
+        <button ng-hide="true">THis might be hidden</button>
+        <button ng-click="dharm.increment()">Click Me</button>
+        <p>Count: {{dharm.count}}</p>
+    </div>
+
+</body>
+</html>

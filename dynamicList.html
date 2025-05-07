@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="ListApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic List Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        angular.module("ListApp", [])
+        .controller("ListController", function($scope) {
+            $scope.items = []; // Array to hold list items
+            $scope.newItem = ""; // Textbox input
+            
+            $scope.addItem = function() {
+                if ($scope.newItem.trim() !== "") { // Only add non-empty items
+                    $scope.items.push($scope.newItem); // Add to list
+                    $scope.newItem = ""; // Clear textbox
+                }
+            };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="ListController">
+        <h1>Dynamic List</h1>
+        <input type="text" ng-model="newItem" placeholder="Enter an item">
+        <button ng-click="addItem()">Add Item</button>
+        <ul>
+            <li ng-repeat="item in items">{{item}}</li>
+        </ul>
+    </div>
+</body>
+</html>

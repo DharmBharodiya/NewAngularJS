@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script>
+        angular.module("MyApp",[])
+        .factory("OctalService", function(){
+            return{
+                toOctal: function(number){
+                    let num = Number(number)
+
+                    if(!isNaN(num) && num === ""){
+                        return "Invalid Output"
+                    }
+
+                    return num.toString(8);//here the base 8 is used to convert to octal
+                }
+            }
+        })
+        .controller("OctCtrl", ['$scope', "OctalService", function($scope, OctalService){
+            $scope.converted = false
+            $scope.userEntry = ""
+            $scope.convert = function(userEntry){
+                $scope.octalNum = OctalService.toOctal($scope.userEntry);
+                $scope.converted = true;
+            }
+        }])
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="OctCtrl">
+        <input type="text" ng-model="userEntry" placeholder="Enter a number">
+        <button ng-click="convert()">Convert to octal</button>
+        <p ng-show="converted">In octal: {{octalNum}}</p>
+    </div> 
+</body>
+</html>

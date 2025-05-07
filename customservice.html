@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script>
+        angular.module("MyApp", [])
+        .factory("UserService", function(){
+            let users = ['alice', 'bob', 'john', 'dharm']
+
+            return{
+                getUsers: function(){
+                    return users;
+                },
+                addUser: function(name){
+                    users.push(name);
+                }
+            }
+        })
+        .controller("MyCtrl", ['$scope', 'UserService', function($scope, UserService){
+
+            $scope.users = UserService.getUsers();
+            $scope.addUser = function(name){
+                UserService.addUser(name);
+                $scope.users = UserService.getUsers();//updating the scope users with the new added user
+            }
+
+        }])
+    </script>
+</head>
+<body ng-app="MyApp">
+   <div ng-controller="MyCtrl">
+        <h1>Users</h1>
+        <ul>
+            <li ng-repeat="user in users">{{user}}</li>
+        </ul>
+        <input type="text" placeholder="Add the name of new user" ng-model="NewUser">
+        <button ng-click="addUser(NewUser)">Add User</button>
+   </div> 
+</body>
+</html>

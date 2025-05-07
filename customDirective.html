@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+
+        angular.module("myApp", [])
+        .directive("NewDirective", function(){
+            return{
+                restrict: 'E',
+                template: "<h1>hello world this is me dharm</h1>"
+            }   
+        })
+
+    </script>
+</head>
+<body ng-app="myApp">
+    <new-directive></new-directive>
+</body>
+</html>

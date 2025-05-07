@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script>
+        // without filter approach
+        // let app = angular.module("MyApp", [])
+        // .controller("MyController", function($scope){
+        //     $scope.textLength = 0
+        //     $scope.showLength = false
+        //     $scope.checkLength = function(text){
+        //         if(text){
+        //             $scope.textLength = text.length;
+        //             $scope.showLength = true
+        //         }else{
+        //             $scope.textLength = 0;
+        //             $scope.showLength = false
+        //         }
+        //     }
+        // })
+
+        let app = angular.module("MyApp", [])
+        .controller("MyController", function($scope){
+           $scope.userText = "";
+        })
+        .filter("TextLength", function(){
+            return function(userText){
+               return userText ? userText.length : 0;
+            }
+        })
+
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyController">
+        <input type="text" placeholder="Enter your text here" ng-model="userText">
+        <!-- <button ng-click="checkLength(UserText)">Check length</button> -->
+        <p>Length: {{userText | TextLength}}</p>
+    </div>
+</body>
+</html>

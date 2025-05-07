@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <script>
+
+        angular.module("MyApp", [])
+        .controller("MyController", function($scope, $http){
+            
+            $http.get("https//www.example.com")
+            .then(function(response){
+                $scope.books = response.data;
+            })
+            .catch(function(error){
+                $scope.error = "Server couldn't be reached."
+            })
+           
+        })
+
+    </script>
+
+</head>
+<body>
+    <body ng-app="MyApp">
+        <div ng-controller="MyController">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                </tr>
+                <tr ng-repeat="book in books">
+                    <td>{{book.name}}</td>
+                    <td>{{book.id}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.price}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</body>
+</html>

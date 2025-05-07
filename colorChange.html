@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <script>
+
+        angular.module("MyApp", [])
+        .directive("colorChanger",function(){
+            return{
+                restrict: 'E',
+                template: `
+                    <select ng-model="selectedColor" ng-change="updateColor()">
+                        <option value="">Select a option</option>
+                        <option value="red">RED</option>
+                        <option value="yellow">YELLOW</option>
+                        <option value="orange">ORANGE</option>
+                        <option value="green">GREEN</option>
+                    </select>
+                    <p ng-style = "{'color' : selectedColor}">This is a text that changes colors</p>
+                        `
+            }
+             
+        })
+        
+    </script>
+
+</head>
+<body ng-app="MyApp">
+        <div>
+            <color-changer></color-changer>
+        </div>
+</body>
+</html>
