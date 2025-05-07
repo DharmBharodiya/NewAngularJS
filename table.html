@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table in Angular JS</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+         var app = angular.module("myApp", []);
+        app.controller("MyController", function($scope){
+            // $scope.people = ['Dharm','Kirtan','Astha','Yatri'];
+            $scope.people = [
+                {"name": "Dharm", "age" : 15, "salary" : 5000},
+                {"name": "kirtan", "age" : 17, "salary" : 4500},
+                {"name" : "Astha", "age" : 21, "salary" : 7689},
+                {"name" : "Yatri", "age" : 19, "salary" : 9873}
+            ]
+        });
+    </script>
+    <style>
+        table{
+            border: 2px solid black;
+            padding: 5px;
+            margin: 0;
+            border-collapse: collapse;
+            }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="MyController">
+        <table border="2px solid black">
+            <tr>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>SALARY</th>
+            </tr>
+            <tr ng-repeat="person in people">
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>{{person.salary}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

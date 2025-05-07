@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script>
+
+        let app = angular.module("MyApp",[])
+
+        app.controller("TableController", function($scope){
+            $scope.students = [
+                {name: 'Astha', school:"Naimisharanya", mobile:"7090000190"},
+                {name: 'Dharm', school:"Gajera", mobile:"91068668415"},
+                {name: 'Hehe', school:"Huhu", mobile:"3453450190"}
+            ]
+        })
+
+    </script>
+    <style>
+        table{
+            border: 2px solid black;
+            padding: 5px;
+            margin: 0;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td{
+            border: 2px solid black;
+            padding: 5px;
+            margin: 0;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="tableContainer" ng-app="MyApp">
+
+        <table ng-controller="TableController">
+            <tr>
+                <th>Name</th>
+                <th>School</th>
+                <th>Mobile</th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td>{{student.name}}</td>
+                <td>{{student.school}}</td>
+                <td>{{student.mobile}}</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
